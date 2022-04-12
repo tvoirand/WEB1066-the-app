@@ -1,6 +1,8 @@
 language: java
-jdk: openjdk8
-dist: xenial
+jdk:
+  - oraclejdk8
+  - oraclejdk9
+dist: trusty
 before_install:
   - ./gradlew clean jar
 jobs:
