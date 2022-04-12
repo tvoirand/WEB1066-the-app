@@ -1,20 +1,25 @@
 language: java
 jdk:
-  - oraclejdk8
-  - oraclejdk9
+- oraclejdk8
 dist: trusty
+services: docker
 before_install:
-  - ./gradlew clean jar
+- "./gradlew clean jar"
 jobs:
-  - COVERAGE=0.5 ./gradlew -p ./monolithic/ui check
-  - COVERAGE=0.5 ./gradlew -p ./monolithic/service/cart check
-  - COVERAGE=0.5 ./gradlew -p ./monolithic/service/user check
-  - COVERAGE=0.3 ./gradlew -p ./monolithic/repository/order check
-  - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
-  - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
-  - COVERAGE=0.3 ./gradlew -p ./monolithic/repository/user check
+- COVERAGE=0.5 ./gradlew -p ./monolithic/ui check
+- COVERAGE=0.5 ./gradlew -p ./monolithic/service/cart check
+- COVERAGE=0.5 ./gradlew -p ./monolithic/service/user check
+- COVERAGE=0.3 ./gradlew -p ./monolithic/repository/order check
+- COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
+- COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
+- COVERAGE=0.3 ./gradlew -p ./monolithic/repository/user check
 deploy:
   provider: script
-  script: echo 'WIP'
+  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\"
+    --password-stdin"
   on:
     all_branches: true
+env:
+  global:
+  - secure: ePvasP2M55R4gvvEY+Zan3WV2NIW4OWF8zIq8w88gDFrvxahfpNV9MzO8yffOx+RbRkIDOv5mygHFWhT8pUyiVI+320fBHgGFoRLRcyNDw5JkPskibgxhDEOqjAsXLIREv9MiIpJyFUKnk6J3gfiYE7Pvbf5IGy8sto7dZYcnEdPoQvrf2L3+ruXpbB8xFjaod86aFe4kj3T2o/2iKllcskbYn4F08lBQx1ihz8AsqVKIK19R+WJeKuQUaP2GcPw6KjqS9jX6wZ31E6l6lc/6pQAxNAjPNYlVzEROJp+PibWmC7lOj84WRxYTZGSNWxpt5V/4gRwOLvuerY+lg0zVmAUCp29jaSiYFrs7bU+GpNiqpPIB1+o1k74SHyCUfg6/9LvfXnh4cHr7w16jesBqzixt0hW0y1xHFdgqMgXMrUFS6sEYxzGaSYjP59evmkPrIdV1EdhfPDYCYcxXxpCWaw3EzNK7iOGdA2DxxSwHT4oKX+t2PSjq/oqtH0maLTOgredkkaSUEQ71SWSu7JsnjdWA6l2d4/u2Cfi5Rdqm8S9IEq+Fe02XE7nP3a156MlUOKgjFi6/g4/PShavLOWTKWoe2gK+6cLLOPUvGR3MLw2htRY1LARdQP+z/1mFCZxVsg1OunSlD1Ti4d37uYSGqEeKKSjZ38xpDjj2Wpc0I4=
+  - secure: lQ5qgQNIaGhZYbBp+WC4GWmSxmDCEiPsAoCAn8ElcORN/gO4iv9lodcDZ71x0efqh8w/8MU8R7EUM1zObCVFdSwvt0U6IEutmPHZRFqmKAX7AX/d/A3iCDDXzWk9DvDsbi5um8h8978xHI4+VNRqt/onVhXJzZxEjjkgD4/goC4gZW84lomX6AJWQF4gYtdd70zf+KNPviUq3cGkhDtXuYcnHhGhgCzHbcLCQmZ5x7pcVpXFQy67RTGSmDXG3bwc6y8P8kYPClwQytmCa+AQXdrAeb/6hZ60HdnYgjxMLxmUvzHkwGCv/B9LInevfwcsE5T54Ag1EPtRfTvsuYqWYK7vE34J3b4Tox3I0vjDxYkXztBnDxExBpq2sQIHrNSn/FdyogOejBzJ+Vo2tTZXq1suhdMV2QO2+Ms62kALgoNDcm9+eWyBCAk68/gQOoF5vh3kXZxE0Cru8WbGX+qbuEADGI4dUQgnRsSUKMGxozMl3w6PCFEg7UmzrMwm1jXTQjnkwq7l9msHYFN/pSmk0BvckzHhSTljCh4tEidtrGa0NrveE6S8VAiSS/xJS9seIC1PyvCOj/q82guz/2GjNdOyqWjuwsmaR/j6B02kDHTQ+zO4SEjlLuYnfJ18jmmRw+tPyQ7L8cYD5aLjmnJfokHR36rtV/N0dUkNrR81hAc=
