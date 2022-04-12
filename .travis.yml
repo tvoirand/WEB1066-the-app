@@ -13,6 +13,8 @@ jobs:
 - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
 - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
 - COVERAGE=0.3 ./gradlew -p ./monolithic/repository/user check
+before_deploy:
+- "./gradlew -p ./monolithic/ui packageToContainer"
 deploy:
   provider: script
   script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\"
