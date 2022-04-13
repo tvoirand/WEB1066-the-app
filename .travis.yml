@@ -17,8 +17,7 @@ before_deploy:
 - "./gradlew -p ./monolithic/ui packageToContainer"
 deploy:
   provider: script
-  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\"
-    --password-stdin"
+  script: bash ./script/deploy.sh
   on:
     all_branches: true
 env:
