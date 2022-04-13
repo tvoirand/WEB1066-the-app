@@ -19,7 +19,7 @@ deploy:
   provider: script
   script: bash ./script/deploy.sh
   on:
-    all_branches: true
+    branch: master
 env:
   global:
   - secure: ePvasP2M55R4gvvEY+Zan3WV2NIW4OWF8zIq8w88gDFrvxahfpNV9MzO8yffOx+RbRkIDOv5mygHFWhT8pUyiVI+320fBHgGFoRLRcyNDw5JkPskibgxhDEOqjAsXLIREv9MiIpJyFUKnk6J3gfiYE7Pvbf5IGy8sto7dZYcnEdPoQvrf2L3+ruXpbB8xFjaod86aFe4kj3T2o/2iKllcskbYn4F08lBQx1ihz8AsqVKIK19R+WJeKuQUaP2GcPw6KjqS9jX6wZ31E6l6lc/6pQAxNAjPNYlVzEROJp+PibWmC7lOj84WRxYTZGSNWxpt5V/4gRwOLvuerY+lg0zVmAUCp29jaSiYFrs7bU+GpNiqpPIB1+o1k74SHyCUfg6/9LvfXnh4cHr7w16jesBqzixt0hW0y1xHFdgqMgXMrUFS6sEYxzGaSYjP59evmkPrIdV1EdhfPDYCYcxXxpCWaw3EzNK7iOGdA2DxxSwHT4oKX+t2PSjq/oqtH0maLTOgredkkaSUEQ71SWSu7JsnjdWA6l2d4/u2Cfi5Rdqm8S9IEq+Fe02XE7nP3a156MlUOKgjFi6/g4/PShavLOWTKWoe2gK+6cLLOPUvGR3MLw2htRY1LARdQP+z/1mFCZxVsg1OunSlD1Ti4d37uYSGqEeKKSjZ38xpDjj2Wpc0I4=
